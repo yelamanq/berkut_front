@@ -7,7 +7,7 @@ export default function Search() {
       style={{ backgroundImage: "url('/src/assets/images/bg.jpg')" }}
     >
       <div className="absolute inset-0 bg-black/40" />
-      <div className="z-10 flex bg-white py-3 px-6 gap-3">
+      <div className="z-10 flex bg-white py-3 px-6 gap-3 rounded-md">
         <input
           className="sm:w-[300px] md:w-[500px] outline-none"
           type="text"

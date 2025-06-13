@@ -17,7 +17,7 @@ export default function Header() {
   };
 
   return (
-    <div className="bg-black h-[100px] flex items-center px-[30px] md:px-[60px] lg:px-[100px]  justify-between text-white font-medium">
+    <div className="bg-black h-[100px] flex items-center px-[30px] md:px-[60px] lg:px-[100px] justify-between text-white font-medium">
       <LogoIcon className="w-[100px] md:w-[120px]" />
       <div className="flex items-center gap-[20px] md:gap-[40px]">
         {!isHome && (
