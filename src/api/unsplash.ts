@@ -12,7 +12,7 @@ export const unsplashApi = axios.create({
 export const fetchRandomPhotos = async () => {
   const res = await unsplashApi.get("/photos/random", {
     params: {
-      count: 9,
+      count: 18,
     },
   });
 
@@ -23,7 +23,7 @@ export const searchPhotos = async (query: string) => {
   const res = await unsplashApi.get("search/photos", {
     params: {
       query,
-      per_page: 9,
+      per_page: 18,
     },
   });
   console.log(res);
