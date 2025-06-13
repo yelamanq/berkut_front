@@ -1,9 +1,11 @@
+import { useDebounce } from "@/hooks/useDebounce";
 import { usePhotoStore } from "@/store/photoStore";
 import { Search as SearchIcon } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Search() {
   const [query, setQuery] = useState<string>("");
+  const debouncedValue = useDebounce(query);
   const searchPhotos = usePhotoStore((state) => state.searchPhotos);
 
   const searchHandler = (e: React.FormEvent) => {
@@ -12,6 +14,10 @@ export default function Search() {
     if (!query.trim()) return;
     searchPhotos(query);
   };
+
+  useEffect(() => {
+    if (debouncedValue) searchPhotos(debouncedValue);
+  }, [debouncedValue]);
 
   return (
     <section

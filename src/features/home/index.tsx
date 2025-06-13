@@ -4,7 +4,7 @@ import PhotoGrid from "./PhotoGrid";
 import { usePhotoStore } from "@/store/photoStore";
 
 export default function Home() {
-  const { photos, fetchPhotos } = usePhotoStore();
+  const { fetchPhotos } = usePhotoStore();
 
   useEffect(() => {
     fetchPhotos();
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <Search />
-      <PhotoGrid photos={photos} />
+      <PhotoGrid />
     </div>
   );
 }

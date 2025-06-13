@@ -1,4 +1,5 @@
 import { fetchMockPhotos } from "@/api/mock";
+import { searchPhotos } from "@/api/unsplash";
 import type { Photo } from "@/types/photo";
 import { create } from "zustand";
 
@@ -28,10 +29,11 @@ export const usePhotoStore = create<PhotoStore>((set) => ({
     set({ loading: true });
     try {
       const allPhotos = await fetchMockPhotos();
-      const filtered = allPhotos.filter((p) =>
+      const data = allPhotos.filter((p) =>
         p.alt_description?.toLowerCase().includes(query.toLowerCase())
       );
-      set({ photos: filtered, loading: false });
+      //   const data = await searchPhotos(query);
+      set({ photos: data, loading: false });
     } catch (e) {
       console.error("Search photos error:", e);
       set({ loading: false });

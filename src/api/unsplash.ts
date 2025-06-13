@@ -26,8 +26,8 @@ export const searchPhotos = async (query: string) => {
       per_page: 9,
     },
   });
-
-  return res.data;
+  console.log(res);
+  return res.data.results;
 };
 
 export const getPhotoById = async (id: string) => {
