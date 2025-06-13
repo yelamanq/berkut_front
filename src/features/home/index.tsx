@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import type { Photo } from "../../types/photo";
-import { fetchMockPhotos } from "../../api/mock";
+import { useEffect } from "react";
 import Search from "./Search";
 import PhotoGrid from "./PhotoGrid";
+import { usePhotoStore } from "@/store/photoStore";
 
 export default function Home() {
-  const [photos, setPhotos] = useState<Photo[] | null>(null);
+  const { photos, fetchPhotos } = usePhotoStore();
 
   useEffect(() => {
-    fetchMockPhotos().then((data) => setPhotos(data));
+    fetchPhotos();
   }, []);
 
   return (

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import type { Photo } from "../../types/photo";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -6,6 +7,12 @@ type Props = {
 };
 
 export default function PhotoGrid({ photos }: Props) {
+  const navigate = useNavigate();
+
+  const photoHandler = (id: string) => {
+    navigate(`/photo/${id}`);
+  };
+
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-[100px] px-[30px] md:px-[60px] lg:px-[100px]">
       {!photos
@@ -14,6 +21,7 @@ export default function PhotoGrid({ photos }: Props) {
           ))
         : photos.map((photo) => (
             <img
+              onClick={() => photoHandler(photo.id)}
               key={photo.id}
               src={photo.urls.small}
               alt={photo.alt_description || ""}
