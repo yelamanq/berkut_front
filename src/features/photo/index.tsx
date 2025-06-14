@@ -18,8 +18,8 @@ export default function PhotoDetail() {
 
   useEffect(() => {
     if (id) {
-      // getPhotoById(id).then((data) => setPhoto(data));
-      getMockPhoto(id).then((data) => setPhoto(data)); // for test requests
+      getPhotoById(id).then((data) => setPhoto(data));
+      // getMockPhoto(id).then((data) => setPhoto(data)); // for test requests
     }
   }, [id]);
 
