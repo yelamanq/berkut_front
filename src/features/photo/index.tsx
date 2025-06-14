@@ -30,7 +30,27 @@ export default function PhotoDetail() {
   return (
     <div>
       {!photo ? (
-        <Skeleton />
+        <div className="z-20 flex flex-col justify-between gap-10 mt-[40px] w-full px-[30px] md:px-[60px] lg:px-[100px]">
+          {/* Top user info skeleton */}
+          <div className="flex justify-between items-start">
+            <div className="flex items-center gap-3">
+              <Skeleton className="w-[46px] h-[46px] rounded-sm" />
+              <div className="flex flex-col gap-2">
+                <Skeleton className="w-[140px] h-[20px] rounded" />
+                <Skeleton className="w-[100px] h-[14px] rounded" />
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <Skeleton className="w-[40px] h-[40px] rounded-md" />
+              <Skeleton className="w-[120px] h-[40px] rounded-md" />
+            </div>
+          </div>
+
+          {/* Main image skeleton */}
+          <div className="relative z-30 mt-[20px] flex justify-center w-full">
+            <Skeleton className="w-full h-[500px] max-h-[650px] rounded-md" />
+          </div>
+        </div>
       ) : (
         <div className="relative w-full h-[650px] flex flex-col px-[30px] md:px-[60px] lg:px-[100px]">
           <Dialog open={open} onOpenChange={setOpen}>
