@@ -5,9 +5,11 @@ export type Photo = {
   urls: {
     small: string;
     regular: string;
+    full: string;
   };
   links: {
     download: string;
+    download_location?: string;
   };
   user: {
     username: string;

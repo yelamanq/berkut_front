@@ -1,4 +1,3 @@
-import { fetchMockPhotos, searchMockPhotos } from "@/api/mock";
 import { fetchRandomPhotos, searchPhotos } from "@/api/unsplash";
 import type { Photo } from "@/types/photo";
 import { create } from "zustand";
@@ -17,8 +16,8 @@ export const usePhotoStore = create<PhotoStore>((set) => ({
   fetchPhotos: async () => {
     set({ loading: true });
     try {
-      const data = await fetchMockPhotos(); // for test requests
-      //   const data = await fetchRandomPhotos();
+      // const data = await fetchMockPhotos(); // for test requests
+      const data = await fetchRandomPhotos();
       set({ photos: data, loading: false });
     } catch (e) {
       console.error("Fetch photos error:", e);
@@ -29,8 +28,8 @@ export const usePhotoStore = create<PhotoStore>((set) => ({
   searchPhotos: async (query: string) => {
     set({ loading: true });
     try {
-      const data = await searchMockPhotos(query); // for test requests
-      //   const data = await searchPhotos(query);
+      // const data = await searchMockPhotos(query); // for test requests
+      const data = await searchPhotos(query);
       set({ photos: data, loading: false });
     } catch (e) {
       console.error("Search photos error:", e);
