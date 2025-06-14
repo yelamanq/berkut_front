@@ -13,7 +13,7 @@ export default function PhotoGrid() {
   };
 
   const iconRef = useRef<SVGSVGElement>(null);
-  const [flipped, setFlipped] = useState(false); // false = вправо, true = влево
+  const [flipped, setFlipped] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -22,7 +22,6 @@ export default function PhotoGrid() {
       const rect = iconRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
 
-      // Если курсор левее центра иконки — отразить по оси X
       setFlipped(e.clientX < centerX);
     };
 

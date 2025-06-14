@@ -14,8 +14,8 @@ export const searchMockPhotos = async (query: string): Promise<Photo[]> => {
   return data;
 };
 
-export const getMockPhoto = async (id: string): Promise<Photo | undefined> => {
+export const getMockPhoto = async (id: string): Promise<Photo | null> => {
   const allPhotos = await fetchMockPhotos();
   const data = allPhotos.find((p) => p.id === id);
-  return data;
+  return data || null;
 };
