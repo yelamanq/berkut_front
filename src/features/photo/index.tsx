@@ -7,6 +7,7 @@ import type { Photo } from "@/types/photo";
 import { Maximize, Download, Heart, HeartOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getMockPhoto } from "@/api/mock";
 
 export default function PhotoDetail() {
   const { id } = useParams();
@@ -17,8 +18,8 @@ export default function PhotoDetail() {
 
   useEffect(() => {
     if (id) {
-      getPhotoById(id).then((data) => setPhoto(data));
-      // getMockPhoto(id).then((data) => setPhoto(data)); // for test requests
+      // getPhotoById(id).then((data) => setPhoto(data));
+      getMockPhoto(id).then((data) => setPhoto(data)); // for test requests
     }
   }, [id]);
 

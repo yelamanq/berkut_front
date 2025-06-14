@@ -1,12 +1,17 @@
+import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { Skeleton } from "@/components/ui/skeleton";
-import { usePhotoStore } from "@/store/photoStore";
 import { Bird } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import type { Photo } from "@/types/photo";
 
-export default function PhotoGrid() {
+type Props = {
+  photos: Photo[] | null;
+  className?: string;
+};
+
+export default function PhotoGrid({ photos, className }: Props) {
   const navigate = useNavigate();
-  const { photos } = usePhotoStore();
 
   const photoHandler = (id: string) => {
     navigate(`/photo/${id}`);
@@ -30,7 +35,12 @@ export default function PhotoGrid() {
   }, []);
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-[100px] px-[30px] md:px-[60px] lg:px-[100px]">
+    <section
+      className={cn(
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-[30px] md:px-[60px] lg:px-[100px] mb-[50px]",
+        className
+      )}
+    >
       {photos === null ? (
         Array.from({ length: 9 }).map((_, i) => (
           <Skeleton key={i} className="w-full h-[400px] rounded-xl" />

@@ -1,21 +1,23 @@
 import { useEffect } from "react";
 import Search from "./Search";
-import PhotoGrid from "./PhotoGrid";
+import PhotoGrid from "../../components/shared/PhotoGrid";
 import { usePhotoStore } from "@/store/photoStore";
 import ScrollToTop from "./ScrollToTop";
 
 export default function Home() {
-  const { fetchPhotos } = usePhotoStore();
+  const { fetchPhotos, photos } = usePhotoStore();
 
   useEffect(() => {
-    fetchPhotos();
-  }, []);
+    if (!photos || photos.length === 0) {
+      fetchPhotos();
+    }
+  }, [photos, fetchPhotos]);
 
   return (
     <div>
       <ScrollToTop />
       <Search />
-      <PhotoGrid />
+      <PhotoGrid photos={photos} className="mt-[100px]" />
     </div>
   );
 }
