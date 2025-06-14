@@ -2,6 +2,7 @@ import { useDebounce } from "@/hooks/useDebounce";
 import { usePhotoStore } from "@/store/photoStore";
 import { Search as SearchIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import bg from "@/assets/images/bg.jpg";
 
 export default function Search() {
   const [query, setQuery] = useState<string>("");
@@ -22,7 +23,7 @@ export default function Search() {
   return (
     <section
       className="relative w-full h-[200px] bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: "url('/src/assets/images/bg.jpg')" }}
+      style={{ backgroundImage: `url(${bg})` }}
     >
       <div className="absolute inset-0 bg-black/40" />
       <form

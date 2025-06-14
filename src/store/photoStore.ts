@@ -1,4 +1,3 @@
-import { fetchMockPhotos, searchMockPhotos } from "@/api/mock";
 import { fetchRandomPhotos, searchPhotos } from "@/api/unsplash";
 import type { Photo } from "@/types/photo";
 import { create } from "zustand";
